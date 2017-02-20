@@ -1,39 +1,22 @@
-
 $(document).ready(function() {
+	$("#cards form").submit(function(event) {
 
-	$("#blanks form").submit(function(event) {
+		var suits = ["clubs","diamonds","hearts","spades"];
+		suits.forEach(function(suit) {
 
-		var blanks = ["item1", "item2", "item3","item4", "item5", "item6"];
+				var numbers = ["Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"];
+				numbers.forEach(function(number) {
 
-		blanks.forEach(function(blank) {
-			var userInput = $("#" + blank).val();
-			$("." + blank).text(userInput).val();
-		});
+					$("." + suit).append($("<li>").text(number + " of " + suit));
+					alert("suit is " + suit);
+					alert("number is " + number);
 
+				});
 
-
-
-		var blankVals = [$("#item1").val(),$("#item2").val(),$("#item3").val(), $("#item4").val(),$("#item5").val(),$("#item6").val()];
-
-		blankVals.sort();
-
-		var blankValsCap = blankVals.map(function(blankValsCap) {
-  		return blankValsCap.toUpperCase();
-		});
-
-		var i = 0;
-
-		blankValsCap.forEach(function(blankValCap) {
-			if (blankValCap != "") {
-				i = parseInt(i) + 1;
-				$(".itemVal" + i).text(blankValCap).val();
-			}
-		});
-
-		$("#blanks").hide();
-		$("#list").show();
+			});
 
 		event.preventDefault();
+
 	});
 
 });
